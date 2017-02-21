@@ -28,6 +28,43 @@ class ViewController: UIViewController {
     }
     var operandStack = Array<Double>()
 
+    @IBAction func operate(_ sender: UIButton)
+    {
+        let operation = sender.currentTitle!
+        if userIsInTheMiddleofTyping {
+            enter()
+        }
+        
+        switch operation {
+        case "+":
+            if operandStack.count >= 2 {
+                self.displayValue = self.operandStack.removeLast() + self.operandStack.removeLast()
+                self.enter()
+           
+                }
+        case "−":
+            if operandStack.count >= 2 {
+                self.displayValue = self.operandStack.removeLast() - self.operandStack.removeLast()
+                self.enter()
+                
+            }
+        case "×":
+            if operandStack.count >= 2 {
+                self.displayValue = self.operandStack.removeLast() * self.operandStack.removeLast()
+                self.enter()
+                
+            }
+        case "÷":
+            if operandStack.count >= 2 {
+                self.displayValue = self.operandStack.removeLast() / self.operandStack.removeLast()
+                self.enter()
+                
+            }
+        default:
+            break
+        }
+    }
+   
     @IBAction func enter()
     {
     
